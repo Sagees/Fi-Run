@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layer-list xmlns:android="http://schemas.android.com/apk/res/android">
+    <!-- 배경 -->
+
+    <item
+        android:drawable="@color/colorAccent"/>
+    <!-- 로고 -->
+    <item>
+        <bitmap
+            android:gravity="center"
+            android:src="@mipmap/logo01"/>
+    </item>
+
+</layer-list>
