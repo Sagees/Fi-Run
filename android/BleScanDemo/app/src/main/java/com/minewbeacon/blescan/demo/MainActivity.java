@@ -3,6 +3,7 @@ package com.minewbeacon.blescan.demo;
 import android.bluetooth.BluetoothAdapter;
 import android.content.Intent;
 import android.graphics.Point;
+import android.graphics.Typeface;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Looper;
@@ -16,6 +17,7 @@ import android.view.Display;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -50,7 +52,7 @@ public class MainActivity extends AppCompatActivity {
     private boolean isScanning;
 
     UserRssi comp = new UserRssi();
-    private TextView mStart_scan;
+//    private TextView mStart_scan;
     private boolean mIsRefreshing;
     private int state;
 
@@ -73,6 +75,9 @@ public class MainActivity extends AppCompatActivity {
 
     // 받기 합쳤다.
     private TextView output;
+    private Button mStart_scan;
+    private ImageView manual;
+//    private ImageView logo;
 
     public NewHandler handler01;
 
@@ -90,8 +95,9 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-
         output = (TextView) findViewById(R.id.output);
+        manual = (ImageView) findViewById(R.id.manual);
+//        logo = (ImageView) findViewById(R.id.logo);
 
         // drawmap
         map = (drawmap)findViewById(R.id.painter);
@@ -338,10 +344,11 @@ public class MainActivity extends AppCompatActivity {
 
 
     private void initView() {
-        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
-        setSupportActionBar(toolbar);
+//        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
+//        setSupportActionBar(toolbar);
 
-        mStart_scan = (TextView) findViewById(R.id.start_scan);
+//        mStart_scan = (TextView) findViewById(R.id.start_scan);
+        mStart_scan = (Button) findViewById(R.id.start_scan);
 
         mRecycle = (RecyclerView) findViewById(R.id.recyeler);
         RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(this);
@@ -361,6 +368,11 @@ public class MainActivity extends AppCompatActivity {
         mStart_scan.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+
+                mStart_scan.setVisibility(View.GONE);
+
+                manual.setVisibility(View.GONE);
+//                logo.setVisibility(View.GONE);
 
                 if (mMinewBeaconManager != null) {
                     BluetoothState bluetoothState = mMinewBeaconManager.checkBluetoothState();

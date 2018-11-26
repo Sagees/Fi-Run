@@ -4,4 +4,7 @@
     <color name="colorPrimaryDark">#303F9F</color>
     <color name="colorAccent">#FF4081</color>
     <color name="btn_press_color">#66000000</color>
+    <color name="back_color">#ffffff</color>
+    <color name="btn_color">#2a2c2d</color>
+
 </resources>

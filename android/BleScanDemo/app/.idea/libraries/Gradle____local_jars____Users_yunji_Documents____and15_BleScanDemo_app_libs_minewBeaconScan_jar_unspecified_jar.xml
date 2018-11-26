@@ -1,5 +1,5 @@
 <component name="libraryTable">
-  <library name="Gradle: __local_jars__:/Users/yunji/Documents/임베디드/안드로이드 프로젝트/and11/BleScanDemo/app/libs/minewBeaconScan.jar:unspecified@jar">
+  <library name="Gradle: __local_jars__:/Users/yunji/Documents/임베디드/안드로이드 프로젝트/and15/BleScanDemo/app/libs/minewBeaconScan.jar:unspecified@jar">
     <CLASSES>
       <root url="jar://$PROJECT_DIR$/libs/minewBeaconScan.jar!/" />
     </CLASSES>

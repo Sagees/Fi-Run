@@ -3,12 +3,12 @@
     <!-- 배경 -->
 
     <item
-        android:drawable="@color/colorAccent"/>
+        android:drawable="@color/back_color"/>
     <!-- 로고 -->
     <item>
         <bitmap
             android:gravity="center"
-            android:src="@mipmap/logo01"/>
+            android:src="@mipmap/logo06"/>
     </item>
 
 </layer-list>

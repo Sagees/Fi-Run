@@ -11,6 +11,7 @@ import android.support.annotation.Nullable;
 import android.util.AttributeSet;
 import android.util.Log;
 import android.view.View;
+import android.widget.ScrollView;
 
 /*
 public class drawmap extends View {
@@ -50,13 +51,14 @@ public class drawmap extends View {
     boolean flag = false;
     int mapi, mapj;
     int[][] lmap;
-
-    int unitA;
+    int dw,dh;
+    float unitA;
+    int W,H;
     public drawmap(Context context, @Nullable AttributeSet attrs) {
         super(context, attrs);
     }
     public void setUnit(int s){
-        this.unitA = s;
+        this.unitA = (float) (s*0.95);
     }
 
     public void setupHandler() {
@@ -68,8 +70,10 @@ public class drawmap extends View {
 
         this.mapi = mapi;
         this.mapj = mapj;
-        int dw = size.x/mapj;
-        int dh = size.y/mapi;
+        dw = size.x/mapj;
+        this.W = size.x;
+        this.H = size.y;
+        dh = (size.y)/mapi;
         if(dw<dh)this.setUnit(dw);
         else this.setUnit(dh);
         flag = true;
@@ -91,16 +95,22 @@ public class drawmap extends View {
         for(int i=0;i<mapi;i++){
             for(int j=0;j<mapj;j++){
                 switch(lmap[i][j]){
-                    case 0: paint.setColor(Color.rgb(103,103,103));break;
-                    case 1: paint.setColor(Color.BLACK);break;
-                    case 2: paint.setColor(Color.RED);break;
-                    case 3: paint.setColor(Color.GREEN);break;
-                    case 4: paint.setColor(Color.rgb(0,255,255));break;
+                    case 0: paint.setColor(Color.rgb(214, 212, 212));break;
+                    case 1: paint.setColor(Color.rgb(45, 45, 44));break;
+                    case 3: paint.setColor(Color.rgb(0, 255, 38));break;
+                    case 4: paint.setColor(Color.rgb(25, 255, 228));break;
+                    case 5: paint.setColor(Color.rgb(255, 83, 10));break;
+                    default: paint.setColor(Color.rgb(214, 212, 212));break;
 
                 }
-                canvas.drawRect(10+j*unitA,10+i*unitA,10+(j+1)*unitA,10+(i+1)*unitA,paint);
+                canvas.drawRect((this.W-mapj*unitA)/2+j*unitA,i*unitA,(this.W-mapj*unitA)/2+(j+1)*unitA,(i+1)*unitA,paint);
+                if(lmap[i][j]==2){
+                    paint.setColor(Color.YELLOW);
+                    canvas.drawCircle((float)((this.W-mapj*unitA)/2+(j+0.5)*unitA),(float)((i+0.5)*unitA),unitA/2,paint);
+                }
             }
         }
+
 
 
     }
