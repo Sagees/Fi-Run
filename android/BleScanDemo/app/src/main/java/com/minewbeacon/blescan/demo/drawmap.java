@@ -4,6 +4,7 @@ import android.content.Context;
 import android.graphics.Canvas;
 import android.graphics.Color;
 import android.graphics.Paint;
+import android.graphics.Point;
 import android.os.Handler;
 import android.os.Message;
 import android.support.annotation.Nullable;
@@ -63,10 +64,14 @@ public class drawmap extends View {
         mHandler = new MHandler();
     }
 
-    public void setupDrawmap(int mapi, int mapj) {
+    public void setupDrawmap(int mapi, int mapj,Point size) {
 
         this.mapi = mapi;
         this.mapj = mapj;
+        int dw = size.x/mapj;
+        int dh = size.y/mapi;
+        if(dw<dh)this.setUnit(dw);
+        else this.setUnit(dh);
         flag = true;
     }
 

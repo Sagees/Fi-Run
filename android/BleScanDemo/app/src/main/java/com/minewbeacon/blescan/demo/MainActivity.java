@@ -76,11 +76,11 @@ public class MainActivity extends AppCompatActivity {
 
     public NewHandler handler01;
 
-
+    static Point size;
     // 그림그리기
     EditText et;
     drawmap map;
-    static int i=5,j=5;
+    //static int i=5,j=5;
 //    static int[][] lmap = {{0,0,3,0,0},{0,0,0,4,0},{0,0,1,4,1},{3,0,1,0,4},{0,0,1,0,2}};
 //    static int[][] lmap = arr;
 
@@ -104,14 +104,8 @@ public class MainActivity extends AppCompatActivity {
 
 
         Display display = getWindowManager(). getDefaultDisplay();
-        Point size = new Point();
+        size = new Point();
         display. getSize(size);
-        int dw = size. x/i;
-        int dh = size. y/j;
-        Log. e("Width", "" + dw);
-        Log. e("height", "" + dh);
-        if(dw < dh)map.setUnit(dw);
-        else map.setUnit(dh);
 
         // drawmap 끝
 
@@ -245,12 +239,22 @@ public class MainActivity extends AppCompatActivity {
 //                    Log.d("split string 문자열 확인",String.valueOf(str2));
                     Log.d("길이 확인",String.valueOf(integerStrings.length));
                     Log.d("길이 확인",String.valueOf(integerStrings[2]));
+                    String[] IJ = new String[2];
+                    //Log.d("IJ", integerStrings[0]+integerStrings[1]+integerStrings[2]+integerStrings[3]+integerStrings[4]);
+                    int n=0;
+                    for(int i=0;i<integerStrings.length-1;i++){
+                        if(integerStrings[i].isEmpty())continue;
+                        else {
+                            IJ[n] = integerStrings[i];
+                            n++;
+                        }
+                        //Log.d("type"+String.valueOf(i), String.valueOf(Integer.parseInt(integerStrings[i])));
+                    }
+                    Log.d("length", IJ[0]+IJ[1]);
+                    int I=Integer.parseInt(IJ[0]);
+                    int J=Integer.parseInt(IJ[1]);
 
-
-                    int I=Integer.parseInt(integerStrings[0]);
-                    int J=Integer.parseInt(integerStrings[1]);
-
-                    map.setupDrawmap(I,J);
+                    map.setupDrawmap(I,J,size);
 
                     Log.d("@@N@@확인 ",String.valueOf(I));
                     Log.d("@@M@@확인 ",String.valueOf(J));
@@ -264,7 +268,7 @@ public class MainActivity extends AppCompatActivity {
 //                            arr[i][j] = Integer.parseInt(integerStrings[2].substring(i*I+j,i*I+j+1));
 //                            arr[i][j] = Integer.parseInt(String.valueOf(integerStrings[2].charAt(i*I+j)));
 //                            arr[i][j] = Character.getNumericValue(String.valueOf(integerStrings[2].charAt(i*I+j)));
-                            arr[i][j] = Character.getNumericValue(integerStrings[2].charAt(I*i+j));
+                            arr[i][j] = Character.getNumericValue(integerStrings[integerStrings.length-1].charAt(J*i+j));
 //                            arr[i][j] = Integer.parseInt(str2[i*I+j]);
                             Log.d("배열 출력 확인",String.valueOf(arr[i][j]));
 
@@ -425,6 +429,10 @@ public class MainActivity extends AppCompatActivity {
                     Toast.makeText(getApplicationContext(), deviceName + "  out range", Toast.LENGTH_SHORT).show();
                 }*/
             }
+
+
+
+
 
             /**
              *  the manager calls back this method every 1 seconds, you can get all scanned beacons.
