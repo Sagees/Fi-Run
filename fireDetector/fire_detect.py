@@ -6,19 +6,20 @@ import os
 import time
 import datetime
 import RPi.GPIO as GPIO
-//import socket
+#import socket
 
-//host = ''
-//port = 4000
+#host = ''
+#port = 4000
 
-//client = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
-//client.connect((host, port))
+
+#client = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
+#client.connect((host, port))
 
 def run():
 
-//	file = open('/sys/devices/w1_bus_master1/w1_master_slaves')
-//	w1_slaves = file.readlines()
-//	file.close()
+#	file = open('/sys/devices/w1_bus_master1/w1_master_slaves')
+#	w1_slaves = file.readlines()
+#	file.close()
 
 	GPIO.setmode(GPIO.BCM)
 	fire_pin_1=20
@@ -56,22 +57,22 @@ def run():
 			i_l+=1
 			
 		# Tempurature for each 1-Wire Slave 
-//		for line in w1_slaves:
+#		for line in w1_slaves:
 		# 1-wire Slave result
-//			w1_slave = line.split("\n")[0]
+#			w1_slave = line.split("\n")[0]
 		# 1-wire Slave read file
-//			file = open('/sys/bus/w1/devices/' + str(w1_slave) + '/w1_slave')
-//			filecontent = file.read()
-//			file.close()
+#			file = open('/sys/bus/w1/devices/' + str(w1_slave) + '/w1_slave')
+#			filecontent = file.read()
+#			file.close()
 
 		# Read temperature and convert
-//			stringvalue = filecontent.split("\n")[1].split(" ")[9]
-//			temperature = float(stringvalue[2:]) / 1000
+#			stringvalue = filecontent.split("\n")[1].split(" ")[9]
+#			temperature = float(stringvalue[2:]) / 1000
 
 		# 불이 났는가 알아보는 과정
 		if (time.time() - cur_time > 5):
 			if ((i_l+i_h)/2 < i_l):
-//				client.send("b MiniBeacon_00058".encode())
+#				client.send("b MiniBeacon_00058".encode())
 				i_l = 0; i_h = 0
 			cur_time = time.time()
 
